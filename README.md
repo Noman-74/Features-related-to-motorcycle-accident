@@ -1,2 +1,1 @@
-# Features-related-to-motorcycle-accident
-Deployment the output using FLASK
+# Features-related-to-motorcycle-accident and Deployment the output using FLASK

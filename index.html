@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login">
+            <h1><a href="{{ url_for('home')}}">Prediction</a></h1>
+            <p>What factors do you think are associated with motorcycle accidents:</p>
+            <p>Please give rating between 1 to 5</p>
+            <p>
+                1  Strongly Disagree<br>
+                2  Disagree<br>
+                3  Neutral<br>
+                4  Mostly Agree<br>
+                5  Completely Agree
+            </p>
+
+            <!-- Main Input For Receiving Query to our ML -->
+            <form action="{{ url_for('predict')}}" method="post">
+                <input type="text" class="form-control mb-2" name="Bikers driving behavior" placeholder="Bikers driving behavior"
+                    required="required" />
+                <input type="text" class="form-control mb-2" name="Motorbike condition" placeholder="Motorbike condition"
+                    required="required" />
+                <input type="text" class="form-control mb-2" name="Weather environment" placeholder="Weather environment" required="required" />
+                <input type="text" class="form-control mb-2" name="Perceived \nEndangerment" placeholder="Perceived \nEndangerment"
+                    required="required" />
+                <input type="text" class="form-control mb-2" name="Pavement condition" placeholder="Pavement condition" required="required" />
+                <input type="text" class="form-control mb-2" name="Sign marking & lighting" placeholder="Sign marking & lighting" required="required" />
+                <input type="text" class="form-control mb-2" name="Traffic control & law" placeholder="Traffic control & law"
+                    required="required" />
+                <input type="text" class="form-control mb-2" name="Traffic movement" placeholder="Traffic movement"
+                    required="required" />
+                <input type="text" class="form-control mb-2" name="Pedestrian activity" placeholder="Pedestrian activity" required="required" />
+
+                <button type="submit" class="form-control btn btn-primary btn-block btn-large">Predict</button>
+            </form>
+
+            <br>
+            {% if prediction_text %}
+            <div class="alert alert-primary" role="alert">
+                <center> {{ prediction_text }}</center>
+            </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
